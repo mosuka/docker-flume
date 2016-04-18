@@ -1,26 +1,5 @@
 #!/bin/bash
 
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-core-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-core/1.0.0/kite-morphlines-core-1.0.0.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-json-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-json/1.0.0/kite-morphlines-json-1.0.0.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-solr-core-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-solr-core/1.0.0/kite-morphlines-solr-core-1.0.0.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-solr-cell-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-solr-cell/1.0.0/kite-morphlines-solr-cell-1.0.0.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-maxmind-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-maxmind/1.0.0/kite-morphlines-maxmind-1.0.0.jar
-
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-solrj-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-solrj/4.10.4/solr-solrj-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-analysis-extras-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-analysis-extras/4.10.4/solr-analysis-extras-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-cell-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-cell/4.10.4/solr-cell-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-clustering-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-clustering/4.10.4/solr-clustering-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-core-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-core/4.10.4/solr-core-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-dataimporthandler-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-dataimporthandler/4.10.4/solr-dataimporthandler-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-dataimporthandler-extras-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-dataimporthandler-extras/4.10.4/solr-dataimporthandler-extras-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-langid-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-langid/4.10.4/solr-langid-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-map-reduce-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-map-reduce/4.10.4/solr-map-reduce-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-morphlines-cell-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-morphlines-cell/4.10.4/solr-morphlines-cell-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-morphlines-core-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-morphlines-core/4.10.4/solr-morphlines-core-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-test-framework-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-test-framework/4.10.4/solr-test-framework-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-uima-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-uima/4.10.4/solr-uima-4.10.4.jar
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-velocity-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-velocity/4.10.4/solr-velocity-4.10.4.jar
-
 curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/lucene-core-4.10.4.jar http://central.maven.org/maven2/org/apache/lucene/lucene-core/4.10.4/lucene-core-4.10.4.jar
 curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/lucene-analyzers-common-4.10.4.jar http://central.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.10.4/lucene-analyzers-common-4.10.4.jar
 curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/lucene-analyzers-icu-4.10.4.jar http://central.maven.org/maven2/org/apache/lucene/lucene-analyzers-icu/4.10.4/lucene-analyzers-icu-4.10.4.jar
@@ -49,12 +28,33 @@ curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/lucene-spatial-4.10.4.
 curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/lucene-suggest-4.10.4.jar http://central.maven.org/maven2/org/apache/lucene/lucene-suggest/4.10.4/lucene-suggest-4.10.4.jar
 curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/lucene-test-framework-4.10.4.jar http://central.maven.org/maven2/org/apache/lucene/lucene-test-framework/4.10.4/lucene-test-framework-4.10.4.jar
 
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-solrj-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-solrj/4.10.4/solr-solrj-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-analysis-extras-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-analysis-extras/4.10.4/solr-analysis-extras-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-cell-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-cell/4.10.4/solr-cell-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-clustering-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-clustering/4.10.4/solr-clustering-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-core-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-core/4.10.4/solr-core-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-dataimporthandler-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-dataimporthandler/4.10.4/solr-dataimporthandler-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-dataimporthandler-extras-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-dataimporthandler-extras/4.10.4/solr-dataimporthandler-extras-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-langid-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-langid/4.10.4/solr-langid-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-map-reduce-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-map-reduce/4.10.4/solr-map-reduce-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-morphlines-cell-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-morphlines-cell/4.10.4/solr-morphlines-cell-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-morphlines-core-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-morphlines-core/4.10.4/solr-morphlines-core-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-test-framework-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-test-framework/4.10.4/solr-test-framework-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-uima-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-uima/4.10.4/solr-uima-4.10.4.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/solr-velocity-4.10.4.jar http://central.maven.org/maven2/org/apache/solr/solr-velocity/4.10.4/solr-velocity-4.10.4.jar
+
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/zookeeper-3.4.6.jar http://central.maven.org/maven2/org/apache/zookeeper/zookeeper/3.4.6/zookeeper-3.4.6.jar
+
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-core-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-core/1.0.0/kite-morphlines-core-1.0.0.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-json-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-json/1.0.0/kite-morphlines-json-1.0.0.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-solr-core-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-solr-core/1.0.0/kite-morphlines-solr-core-1.0.0.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-solr-cell-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-solr-cell/1.0.0/kite-morphlines-solr-cell-1.0.0.jar
+curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/kite-morphlines-maxmind-1.0.0.jar http://central.maven.org/maven2/org/kitesdk/kite-morphlines-maxmind/1.0.0/kite-morphlines-maxmind-1.0.0.jar
+
 curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/metrics-core-3.0.2.jar http://central.maven.org/maven2/com/codahale/metrics/metrics-core/3.0.2/metrics-core-3.0.2.jar
 curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/metrics-healthchecks-3.0.2.jar http://central.maven.org/maven2/com/codahale/metrics/metrics-healthchecks/3.0.2/metrics-healthchecks-3.0.2.jar
 
 curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/config-1.0.2.jar http://central.maven.org/maven2/com/typesafe/config/1.0.2/config-1.0.2.jar
-
-curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/zookeeper-3.4.6.jar http://central.maven.org/maven2/org/apache/zookeeper/zookeeper/3.4.6/zookeeper-3.4.6.jar
 
 curl -L -o /Users/mosuka/flume/apache-flume-1.6.0-bin/lib/noggit-0.5.jar http://central.maven.org/maven2/org/noggit/noggit/0.5/noggit-0.5.jar
 

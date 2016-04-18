@@ -25,15 +25,17 @@
 #     or need to start multiple services in the one container
 
 # Set environment variables.
-JETTY_PREFIX=${JETTY_PREFIX:-/opt/jetty}
+FLUME_PREFIX=${FLUME_PREFIX:-/opt/flume}
+FLUME_PID_FILE=${FLUME_PID_FILE:-${FLUME_PREFIX}/flume.pid}
 
 # Show environment variables.
-echo "JETTY_PREFIX=${JETTY_PREFIX}"
+echo "FLUME_PREFIX=${FLUME_PREFIX}"
+echo "FLUME_PID_FILE=${FLUME_PID_FILE}"
 
 # Stop function.
 function stop() {
-  # Stop Jetty.
-  ${JETTY_PREFIX}/bin/jetty.sh stop
+  # Stop Flume.
+  kill $(cat ${FLUME_PID_FILE})
 }
 
 # Stop
