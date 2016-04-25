@@ -25,11 +25,11 @@
 #     or need to start multiple services in the one container
 
 # Set environment variables.
-FLUME_PREFIX=${FLUME_PREFIX:-/opt/flume}
-FLUME_PID_FILE=${FLUME_PID_FILE:-${FLUME_PREFIX}/flume.pid}
+FLUME_HOME=${FLUME_HOME:-/opt/flume}
+FLUME_PID_FILE=${FLUME_PID_FILE:-${FLUME_HOME}/flume.pid}
 
 # Show environment variables.
-echo "FLUME_PREFIX=${FLUME_PREFIX}"
+echo "FLUME_HOME=${FLUME_HOME}"
 echo "FLUME_PID_FILE=${FLUME_PID_FILE}"
 
 # Stop function.

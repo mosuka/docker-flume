@@ -28,7 +28,7 @@ ENV FLUME_UID 41414
 ENV HOME=/home/${FLUME_USER}
 ENV FLUME_VERSION 1.6.0
 ENV ZOOKEEPER_VERSION 3.4.6
-ENV FLUME_PREFIX ${HOME}/apache-flume-${FLUME_VERSION}-bin
+ENV FLUME_HOME ${HOME}/apache-flume-${FLUME_VERSION}-bin
 ENV ZOOKEEPER_PREFIX ${HOME}/zookeeper-${ZOOKEEPER_VERSION}
 
 RUN apt-get update && \
@@ -45,7 +45,7 @@ RUN apt-get update && \
     rm ${HOME}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz && \
     chown -R ${FLUME_USER}:${FLUME_GROUP} ${HOME}
 
-ADD docker-run.sh /usr/local/bin/
+ADD docker-stop.sh /usr/local/bin/
 ADD docker-stop.sh /usr/local/bin/
 
 EXPOSE 41414

@@ -25,21 +25,21 @@
 #     or need to start multiple services in the one container
 
 # Set environment variables.
-FLUME_PREFIX=${FLUME_PREFIX:-/opt/flume}
+FLUME_HOME=${FLUME_HOME:-/opt/flume}
 FLUME_COMMAND=${FLUME_COMMAND:-agent}
-FLUME_CONF_DIR=${FLUME_CONF_DIR:-${FLUME_PREFIX}/conf}
+FLUME_CONF_DIR=${FLUME_CONF_DIR:-${FLUME_HOME}/conf}
 FLUME_CLASSPATH=${FLUME_CLASSPATH:-""}
 FLUME_AGENT_NAME=${FLUME_AGENT_NAME:-agent}
 FLUME_CONF_FILE=${FLUME_CONF_FILE:-${FLUME_CONF_DIR}/flume-conf.properties}
 FLUME_ZK_CONN_STRING=${FLUME_ZK_CONN_STRING:-localhost:2181}
 FLUME_ZK_BASE_PATH=${FLUME_ZK_BASE_PATH:-/flume}
 
-FLUME_PID_FILE=${FLUME_PID_FILE:-${FLUME_PREFIX}/flume.pid}
+FLUME_PID_FILE=${FLUME_PID_FILE:-${FLUME_HOME}/flume.pid}
 
 ZOOKEEPER_PREFIX=${ZOOKEEPER_PREFIX:-/opt/zookeeper}
 
 # Show environment variables.
-echo "FLUME_PREFIX=${FLUME_PREFIX}"
+echo "FLUME_HOME=${FLUME_HOME}"
 echo "FLUME_COMMAND=${FLUME_COMMAND}"
 echo "FLUME_CONF_DIR=${FLUME_CONF_DIR}"
 echo "FLUME_CLASSPATH=${FLUME_CLASSPATH}"
@@ -54,10 +54,10 @@ function start() {
     # Upload configs
 
     # Start Flume.
-    ${FLUME_PREFIX}/bin/flume-ng ${FLUME_COMMAND} --zkConnString ${FLUME_ZK_CONN_STRING} --zkBasePath ${FLUME_ZK_BASE_PATH} -Dflume.root.logger=INFO,console &
+    ${FLUME_HOME}/bin/flume-ng ${FLUME_COMMAND} --zkConnString ${FLUME_ZK_CONN_STRING} --zkBasePath ${FLUME_ZK_BASE_PATH} -Dflume.root.logger=INFO,console &
   else
     # Start Flume.
-    ${FLUME_PREFIX}/bin/flume-ng ${FLUME_COMMAND} --conf ${FLUME_CONF_DIR} --classpath ${FLUME_CLASSPATH} --name ${FLUME_AGENT_NAME} --conf-file ${FLUME_CONF_FILE} -Dflume.root.logger=INFO,console &
+    ${FLUME_HOME}/bin/flume-ng ${FLUME_COMMAND} --conf ${FLUME_CONF_DIR} --classpath ${FLUME_CLASSPATH} --name ${FLUME_AGENT_NAME} --conf-file ${FLUME_CONF_FILE} -Dflume.root.logger=INFO,console &
   fi
   echo -n $! > ${FLUME_PID_FILE}
 }
