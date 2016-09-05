@@ -49,11 +49,13 @@ echo "FLUME_AGENT_NAME=${FLUME_AGENT_NAME}"
 FLUME_AGENT_CONF_FILE=${FLUME_AGENT_CONF_FILE:-${FLUME_CONF_DIR}/flume-conf.properties}
 echo "FLUME_AGENT_CONF_FILE=${FLUME_AGENT_CONF_FILE}"
 
-FLUME_AGENT_ZK_CONN_STRING=${FLUME_AGENT_ZK_CONN_STRING:-""}
-echo "FLUME_AGENT_ZK_CONN_STRING=${FLUME_AGENT_ZK_CONN_STRING}"
+# TODO: Support ZooKeeper
+#FLUME_AGENT_ZK_CONN_STRING=${FLUME_AGENT_ZK_CONN_STRING:-""}
+#echo "FLUME_AGENT_ZK_CONN_STRING=${FLUME_AGENT_ZK_CONN_STRING}"
 
-FLUME_AGENT_ZK_BASE_PATH=${FLUME_AGENT_ZK_BASE_PATH:-/flume}
-echo "FLUME_AGENT_ZK_BASE_PATH=${FLUME_AGENT_ZK_BASE_PATH}"
+# TODO: Support ZooKeeper
+#FLUME_AGENT_ZK_BASE_PATH=${FLUME_AGENT_ZK_BASE_PATH:-/flume}
+#echo "FLUME_AGENT_ZK_BASE_PATH=${FLUME_AGENT_ZK_BASE_PATH}"
 
 FLUME_AGENT_NO_RELOAD_CONF==${FLUME_AGENT_NO_RELOAD_CONF:-false}
 echo "FLUME_AGENT_NO_RELOAD_CONF=${FLUME_AGENT_NO_RELOAD_CONF}"
@@ -74,18 +76,14 @@ function start() {
     mkdir -p ${FLUME_OPT_PLUGINS_PATH}
   fi
 
-  # Copy flume-conf.properties.
-  cp ${FLUME_CONF_DIR}/flume-conf.properties.template ${FLUME_CONF_DIR}/flume-conf.properties
-  cp ${FLUME_CONF_DIR}/flume-env.sh.template ${FLUME_CONF_DIR}/flume-env.sh
-
-  if [ -n "${FLUME_ZK_CONN_STRING}" ]; then
-    echo "Starting flume with ZooKeeper"
-
-    # Upload configs.
-
-    # Start Flume.
-    ${FLUME_HOME}/bin/flume-ng ${FLUME_COMMAND} --zkConnString ${FLUME_ZK_CONN_STRING} --zkBasePath ${FLUME_ZK_BASE_PATH} -Dflume.root.logger=INFO,console &
-  else
+  #if [ -n "${FLUME_AGENT_ZK_CONN_STRING}" ]; then
+  #  echo "Starting flume with ZooKeeper"
+  #
+  #  # Upload configs.
+  #
+  #  # Start Flume.
+  #  ${FLUME_HOME}/bin/flume-ng ${FLUME_COMMAND} --zkConnString ${FLUME_AGENT_ZK_CONN_STRING} --zkBasePath ${FLUME_AGENT_ZK_BASE_PATH} -Dflume.root.logger=INFO,console &
+  #else
     echo "Starting flume"
 
     FLUME_OPTS="${FLUME_COMMAND}"
@@ -107,7 +105,7 @@ function start() {
 
     # Start Flume.
     ${FLUME_HOME}/bin/flume-ng ${FLUME_OPTS} -Dflume.root.logger=INFO,console &
-  fi
+  #fi
   echo -n $! > ${FLUME_PID_FILE}
 }
 

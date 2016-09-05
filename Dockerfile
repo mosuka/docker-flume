@@ -37,8 +37,8 @@ ENV ZOOKEEPER_VERSION 3.4.5
 RUN curl -L -o ${HOME}/apache-flume-${FLUME_VERSION}-bin.tar.gz http://archive.apache.org/dist/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz && \
     tar -C ${HOME} -xf ${HOME}/apache-flume-${FLUME_VERSION}-bin.tar.gz && \
     rm ${HOME}/apache-flume-${FLUME_VERSION}-bin.tar.gz && \
-    cp ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-conf.properties.template ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-conf.properties
-    cp ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-env.sh.template ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-env.sh
+    cp ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-conf.properties.template ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-conf.properties && \
+    cp ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-env.sh.template ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-env.sh && \
     curl -L -o ${HOME}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz http://archive.apache.org/dist/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz && \
     tar -C ${HOME} -xf ${HOME}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz && \
     rm ${HOME}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz

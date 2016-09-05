@@ -34,6 +34,7 @@ echo "FLUME_PID_FILE=${FLUME_PID_FILE}"
 # Stop function.
 function stop() {
   # Stop Flume.
+  echo "Stopping Flume"
   kill $(cat ${FLUME_PID_FILE})
 }
 
