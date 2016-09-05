@@ -26,10 +26,9 @@
 
 # Set environment variables.
 FLUME_HOME=${FLUME_HOME:-/opt/flume}
-FLUME_PID_FILE=${FLUME_PID_FILE:-${FLUME_HOME}/flume.pid}
-
-# Show environment variables.
 echo "FLUME_HOME=${FLUME_HOME}"
+
+FLUME_PID_FILE=${FLUME_PID_FILE:-${FLUME_HOME}/flume.pid}
 echo "FLUME_PID_FILE=${FLUME_PID_FILE}"
 
 # Stop function.
