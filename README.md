@@ -29,7 +29,16 @@ $ docker pull mosuka/docker-flume:latest
 
 ```
 $ docker run -d --name flume mosuka/docker-flume:latest
+b1e8a875d7ed860cd548305a040ec12e99eb7cb5c92b6b1865cbaf592aa0927e
+
+$ FLUME_CONTAINER_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' flume)
+$ echo ${FLUME_CONTAINER_IP}
+172.17.0.2
 ```
+
+
+docker exec -i -t flume /bin/bash
+
 
 1. Stop
 

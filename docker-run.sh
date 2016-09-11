@@ -49,13 +49,11 @@ echo "FLUME_AGENT_NAME=${FLUME_AGENT_NAME}"
 FLUME_AGENT_CONF_FILE=${FLUME_AGENT_CONF_FILE:-${FLUME_CONF_DIR}/flume-conf.properties}
 echo "FLUME_AGENT_CONF_FILE=${FLUME_AGENT_CONF_FILE}"
 
-# TODO: Support ZooKeeper
-#FLUME_AGENT_ZK_CONN_STRING=${FLUME_AGENT_ZK_CONN_STRING:-""}
-#echo "FLUME_AGENT_ZK_CONN_STRING=${FLUME_AGENT_ZK_CONN_STRING}"
+FLUME_AGENT_ZK_CONN_STRING=${FLUME_AGENT_ZK_CONN_STRING:-""}
+echo "FLUME_AGENT_ZK_CONN_STRING=${FLUME_AGENT_ZK_CONN_STRING}"
 
-# TODO: Support ZooKeeper
-#FLUME_AGENT_ZK_BASE_PATH=${FLUME_AGENT_ZK_BASE_PATH:-/flume}
-#echo "FLUME_AGENT_ZK_BASE_PATH=${FLUME_AGENT_ZK_BASE_PATH}"
+FLUME_AGENT_ZK_BASE_PATH=${FLUME_AGENT_ZK_BASE_PATH:-/flume}
+echo "FLUME_AGENT_ZK_BASE_PATH=${FLUME_AGENT_ZK_BASE_PATH}"
 
 FLUME_AGENT_NO_RELOAD_CONF==${FLUME_AGENT_NO_RELOAD_CONF:-false}
 echo "FLUME_AGENT_NO_RELOAD_CONF=${FLUME_AGENT_NO_RELOAD_CONF}"
@@ -66,8 +64,8 @@ echo "FLUME_PID_FILE=${FLUME_PID_FILE}"
 FLUME_CLASSPATH=${FLUME_CLASSPATH:-""}
 echo "FLUME_CLASSPATH=${FLUME_CLASSPATH}"
 
-ZOOKEEPER_PREFIX=${ZOOKEEPER_PREFIX:-/opt/zookeeper}
-echo "ZOOKEEPER_PREFIX=${ZOOKEEPER_PREFIX}"
+ZOOKEEPER_CLI_PREFIX=${ZOOKEEPER_CLI_PREFIX:-/opt/zookeeper-cli}
+echo "ZOOKEEPER_CLI_PREFIX=${ZOOKEEPER_CLI_PREFIX}"
 
 # Start function
 function start() {
@@ -76,14 +74,17 @@ function start() {
     mkdir -p ${FLUME_OPT_PLUGINS_PATH}
   fi
 
-  #if [ -n "${FLUME_AGENT_ZK_CONN_STRING}" ]; then
-  #  echo "Starting flume with ZooKeeper"
-  #
-  #  # Upload configs.
-  #
-  #  # Start Flume.
-  #  ${FLUME_HOME}/bin/flume-ng ${FLUME_COMMAND} --zkConnString ${FLUME_AGENT_ZK_CONN_STRING} --zkBasePath ${FLUME_AGENT_ZK_BASE_PATH} -Dflume.root.logger=INFO,console &
-  #else
+  if [ -n "${FLUME_AGENT_ZK_CONN_STRING}" ]; then
+    echo "Starting flume with ZooKeeper"
+  
+    # Upload configs.
+    ${ZOOKEEPER_CLI_PREFIX}/bin/zkNiCli.sh -s ${FLUME_AGENT_ZK_CONN_STRING} create "${FLUME_AGENT_ZK_BASE_PATH}/${FLUME_AGENT_NAME}/flume-conf.properties" "$(cat ${FLUME_HOME}/conf/flume-conf.properties)"
+    ${ZOOKEEPER_CLI_PREFIX}/bin/zkNiCli.sh -s ${FLUME_AGENT_ZK_CONN_STRING} create "${FLUME_AGENT_ZK_BASE_PATH}/${FLUME_AGENT_NAME}/log4j.properties" "$(cat ${FLUME_HOME}/conf/log4j.properties)"
+    ${ZOOKEEPER_CLI_PREFIX}/bin/zkNiCli.sh -s ${FLUME_AGENT_ZK_CONN_STRING} create "${FLUME_AGENT_ZK_BASE_PATH}/${FLUME_AGENT_NAME}/flume-env.sh" "$(cat ${FLUME_HOME}/conf/flume-env.sh)"
+ 
+    # Start Flume.
+    ${FLUME_HOME}/bin/flume-ng ${FLUME_COMMAND} --zkConnString ${FLUME_AGENT_ZK_CONN_STRING} --zkBasePath ${FLUME_AGENT_ZK_BASE_PATH} -Dflume.root.logger=INFO,console &
+  else
     echo "Starting flume"
 
     FLUME_OPTS="${FLUME_COMMAND}"
@@ -105,7 +106,7 @@ function start() {
 
     # Start Flume.
     ${FLUME_HOME}/bin/flume-ng ${FLUME_OPTS} -Dflume.root.logger=INFO,console &
-  #fi
+  fi
   echo -n $! > ${FLUME_PID_FILE}
 }
 
