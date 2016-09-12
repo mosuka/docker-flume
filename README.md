@@ -50,8 +50,8 @@ flume
 
 Run ZooKeeper. See following URL:
 
-Source: [https://github.com/mosuka/docker-zookeeper](https://github.com/mosuka/docker-zookeeper)
-Docker Image: [https://hub.docker.com/r/mosuka/docker-zookeeper/](https://hub.docker.com/r/mosuka/docker-zookeeper/)
+- Source: [https://github.com/mosuka/docker-zookeeper](https://github.com/mosuka/docker-zookeeper)
+- Docker Image: [https://hub.docker.com/r/mosuka/docker-zookeeper/](https://hub.docker.com/r/mosuka/docker-zookeeper/)
 
 #### 2. Start
 
