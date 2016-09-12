@@ -47,3 +47,24 @@ $ docker stop flume; docker rm flume
 flume
 flume
 ```
+
+### Cluster example
+
+1. Start
+
+```
+$ docker run -d --name flume -e FLUME_AGENT_ZK_CONN_STRING=${ZOOKEEPER_CONTAINER_IP}:2181 -e FLUME_AGENT_ZK_BASE_PATH=/flume mosuka/docker-flume:latest
+b1e8a875d7ed860cd548305a040ec12e99eb7cb5c92b6b1865cbaf592aa0927e
+
+$ FLUME_CONTAINER_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' flume)
+$ echo ${FLUME_CONTAINER_IP}
+172.17.0.3
+```
+
+1. Stop
+
+```
+$ docker stop flume; docker rm flume
+flume
+flume
+```

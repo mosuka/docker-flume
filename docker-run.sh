@@ -74,35 +74,35 @@ function start() {
     mkdir -p ${FLUME_OPT_PLUGINS_PATH}
   fi
 
+  FLUME_OPTS="${FLUME_COMMAND}"
+  if [ -n ${FLUME_OPT_CONF} ]; then
+    FLUME_OPTS="${FLUME_OPTS} --conf ${FLUME_OPT_CONF}"
+  fi
+  if [ -n ${FLUME_OPT_CLASSPATH} ]; then
+    FLUME_OPTS="${FLUME_OPTS} --classpath ${FLUME_OPT_CLASSPATH}"
+  fi
+  if [ -n ${FLUME_OPT_PLUGINS_PATH} ]; then
+    FLUME_OPTS="${FLUME_OPTS} --plugins-path ${FLUME_OPT_PLUGINS_PATH}"
+  fi
+  if [ -n ${FLUME_AGENT_NAME} ]; then
+    FLUME_OPTS="${FLUME_OPTS} --name ${FLUME_AGENT_NAME}"
+  fi
+
   if [ -n "${FLUME_AGENT_ZK_CONN_STRING}" ]; then
     echo "Starting flume with ZooKeeper"
   
-    # Upload configs.
-    ${ZOOKEEPER_CLI_PREFIX}/bin/zkNiCli.sh -s ${FLUME_AGENT_ZK_CONN_STRING} create "${FLUME_AGENT_ZK_BASE_PATH}/${FLUME_AGENT_NAME}/flume-conf.properties" "$(cat ${FLUME_HOME}/conf/flume-conf.properties)"
-    ${ZOOKEEPER_CLI_PREFIX}/bin/zkNiCli.sh -s ${FLUME_AGENT_ZK_CONN_STRING} create "${FLUME_AGENT_ZK_BASE_PATH}/${FLUME_AGENT_NAME}/log4j.properties" "$(cat ${FLUME_HOME}/conf/log4j.properties)"
-    ${ZOOKEEPER_CLI_PREFIX}/bin/zkNiCli.sh -s ${FLUME_AGENT_ZK_CONN_STRING} create "${FLUME_AGENT_ZK_BASE_PATH}/${FLUME_AGENT_NAME}/flume-env.sh" "$(cat ${FLUME_HOME}/conf/flume-env.sh)"
+    # Upload flume-conf.properties to ZooKeeper.
+    ${ZOOKEEPER_CLI_PREFIX}/bin/zkNiCli.sh -s ${FLUME_AGENT_ZK_CONN_STRING} create -p "${FLUME_AGENT_ZK_BASE_PATH}/${FLUME_AGENT_NAME}" "$(cat ${FLUME_HOME}/conf/flume-conf.properties)"
  
+    FLUME_OPTS="${FLUME_OPTS} --zkConnString ${FLUME_AGENT_ZK_CONN_STRING}"
+    FLUME_OPTS="${FLUME_OPTS} --zkBasePath ${FLUME_AGENT_ZK_BASE_PATH}"
+
     # Start Flume.
-    ${FLUME_HOME}/bin/flume-ng ${FLUME_COMMAND} --zkConnString ${FLUME_AGENT_ZK_CONN_STRING} --zkBasePath ${FLUME_AGENT_ZK_BASE_PATH} -Dflume.root.logger=INFO,console &
+    ${FLUME_HOME}/bin/flume-ng ${FLUME_OPTS} -Dflume.root.logger=INFO,console &
   else
     echo "Starting flume"
 
-    FLUME_OPTS="${FLUME_COMMAND}"
-    if [ -n ${FLUME_OPT_CONF} ]; then
-      FLUME_OPTS="${FLUME_OPTS} --conf ${FLUME_OPT_CONF}"
-    fi
-    if [ -n ${FLUME_OPT_CLASSPATH} ]; then
-      FLUME_OPTS="${FLUME_OPTS} --classpath ${FLUME_OPT_CLASSPATH}"
-    fi
-    if [ -n ${FLUME_OPT_PLUGINS_PATH} ]; then
-      FLUME_OPTS="${FLUME_OPTS} --plugins-path ${FLUME_OPT_PLUGINS_PATH}"
-    fi
-    if [ -n ${FLUME_AGENT_NAME} ]; then
-      FLUME_OPTS="${FLUME_OPTS} --name ${FLUME_AGENT_NAME}"
-    fi
-    if [ -n ${FLUME_AGENT_CONF_FILE} ]; then
-      FLUME_OPTS="${FLUME_OPTS} --conf-file ${FLUME_AGENT_CONF_FILE}"
-    fi
+    FLUME_OPTS="${FLUME_OPTS} --conf-file ${FLUME_AGENT_CONF_FILE}"
 
     # Start Flume.
     ${FLUME_HOME}/bin/flume-ng ${FLUME_OPTS} -Dflume.root.logger=INFO,console &

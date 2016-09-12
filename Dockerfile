@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM java:openjdk-8-jre
+FROM java:openjdk-7-jre
 MAINTAINER Minoru Osuka "minoru.osuka@gmail.com"
 
 ENV FLUME_GROUP flume
@@ -39,6 +39,7 @@ RUN curl -L -o ${HOME}/apache-flume-${FLUME_VERSION}-bin.tar.gz http://archive.a
     rm ${HOME}/apache-flume-${FLUME_VERSION}-bin.tar.gz && \
     cp ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-conf.properties.template ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-conf.properties && \
     cp ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-env.sh.template ${HOME}/apache-flume-${FLUME_VERSION}-bin/conf/flume-env.sh && \
+    curl -L -o ${HOME}/apache-flume-${FLUME_VERSION}-bin/lib/zookeeper-3.4.6.jar http://central.maven.org/maven2/org/apache/zookeeper/zookeeper/3.4.6/zookeeper-3.4.6.jar && \
     curl -L -o ${HOME}/zookeeper-cli-${ZOOKEEPER_CLI_VERSION}.tgz https://github.com/mosuka/zookeeper-cli/releases/download/${ZOOKEEPER_CLI_VERSION}/zookeeper-cli-${ZOOKEEPER_CLI_VERSION}.tgz && \
     tar -C ${HOME} -xf ${HOME}/zookeeper-cli-${ZOOKEEPER_CLI_VERSION}.tgz && \
     rm ${HOME}/zookeeper-cli-${ZOOKEEPER_CLI_VERSION}.tgz
