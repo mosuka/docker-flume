@@ -23,9 +23,9 @@ $ docker pull mosuka/docker-flume:latest
 
 ## How to use this Docker image
 
-### Standalone example
+### Standalone Flume
 
-1. Start
+#### 1. Start
 
 ```
 $ docker run -d --name flume mosuka/docker-flume:latest
@@ -36,11 +36,7 @@ $ echo ${FLUME_CONTAINER_IP}
 172.17.0.2
 ```
 
-
-docker exec -i -t flume /bin/bash
-
-
-1. Stop
+#### 2. Stop
 
 ```
 $ docker stop flume; docker rm flume
@@ -48,9 +44,16 @@ flume
 flume
 ```
 
-### Cluster example
+### Start Flume cluster with ZooKeeper
 
-1. Start
+#### 1. Start Zookeeper
+
+Run ZooKeeper. See following URL:
+
+Source: [https://github.com/mosuka/docker-zookeeper](https://github.com/mosuka/docker-zookeeper)
+Docker Image: [https://hub.docker.com/r/mosuka/docker-zookeeper/](https://hub.docker.com/r/mosuka/docker-zookeeper/)
+
+#### 2. Start
 
 ```
 $ docker run -d --name flume -e FLUME_AGENT_ZK_CONN_STRING=${ZOOKEEPER_CONTAINER_IP}:2181 -e FLUME_AGENT_ZK_BASE_PATH=/flume mosuka/docker-flume:latest
@@ -61,7 +64,7 @@ $ echo ${FLUME_CONTAINER_IP}
 172.17.0.3
 ```
 
-1. Stop
+#### 3. Stop
 
 ```
 $ docker stop flume; docker rm flume
