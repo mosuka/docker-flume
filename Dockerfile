@@ -33,7 +33,7 @@ USER ${FLUME_USER}
 WORKDIR ${HOME}
 
 ENV FLUME_VERSION 1.6.0
-ENV ZOOKEEPER_CLI_VERSION 0.1.2
+ENV ZOOKEEPER_CLI_VERSION 0.1.3
 RUN curl -L -o ${HOME}/apache-flume-${FLUME_VERSION}-bin.tar.gz http://archive.apache.org/dist/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz && \
     tar -C ${HOME} -xf ${HOME}/apache-flume-${FLUME_VERSION}-bin.tar.gz && \
     rm ${HOME}/apache-flume-${FLUME_VERSION}-bin.tar.gz && \
